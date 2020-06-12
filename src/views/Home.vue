@@ -24,7 +24,7 @@
 <script>
 
 import  axios  from "axios"
-import {mapMutations} from 'vuex'
+
 
   export default {
     name: 'Home',
@@ -37,14 +37,13 @@ import {mapMutations} from 'vuex'
       }
     },
     methods: {
-      ...mapMutations(['mostrarLoading', 'ocultarLoading']),
+
       async getDolar(dia){
         let arrayFecha = dia.split(['-'])
         arrayFecha = arrayFecha.reverse()
         let dmmyy = arrayFecha.join('-')
         try {
 
-          this.mostrarLoading({titulo: 'Accediendo a Información'})
 
           let datos = await axios.get(`https://mindicador.cl/api/dolar/${dmmyy}`)
           if (datos.data.serie.length > 0){
@@ -57,7 +56,7 @@ import {mapMutations} from 'vuex'
           // console.log(error)
         }
         finally{
-          this.ocultarLoading()
+
         }
 
       },
